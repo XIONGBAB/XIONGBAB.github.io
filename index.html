@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <meta name="keywords" content="">
+    <meta name="decription" content="">
+    <meta name="author" content="">
+    <title>XIONGBAB</title>
+</head>
+
+<body>
+    <!-- banner -->
+    <header>
+        <!--  Swiper  -->
+        <div class="swiper-container header_s">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="./images/banner1.png" alt=""></div>
+                <div class="swiper-slide"><img src="./images/banner1.png" alt=""></div>
+                <div class="swiper-slide"><img src="./images/banner1.png" alt=""></div>
+            </div> -->
+            <!-- Add Pagination  -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </header>
+    <!-- function -->
+    <article>
+        <div class="function_title">
+            <i></i>
+            <h3>核心功能</h3>
+        </div>
+        <nav class="nav">
+            <a href="#"><img src="./images/function_img1.png" alt="">
+                <span>在线阅读</span></a>
+            <a href="#"><img src="./images/function_img2.png" alt="">
+                <span>书写网课</span></a>
+            <a href="#"><img src="./images/function_img3.png" alt="">
+                <span>电脑网课</span></a>
+            <a href="#"><img src="./images/function_img4.png" alt="">
+                <span>语文网课</span></a>
+            <a href="#"><img src="./images/function_img5.png" alt="">
+                <span>英语网课</span></a>
+        </nav>
+        <section class="ad">
+            <a href="" class="ad_left"><img src="./images/advertisement1.png" alt=""></a>
+            <a href=""><img src="./images/advertisement2.png" alt=""></a>
+        </section>
+        <div class="ad_title">
+            <span>教育部最新发文：取消本科生毕业前补考</span>
+        </div>
+        <section class="function_content">
+            <div class="content_left">
+                <h3>中小学在线辅导</h3>
+                <h4>提升成绩 包您满意</h4>
+            </div>
+            <div class="content_right">
+                <img src="./images/img.png" alt="">
+            </div>
+        </section>
+    </article>
+    <article calss="curriculum">
+        <div class="function_title">
+            <i></i>
+            <h3>精选课程</h3>
+        </div>
+        <div class="curriculum_img">
+            <a href=""><img src="./images/curriculum.png" alt=""><span>输入你课程名称</span></a>
+            <a href=""><img src="./images/curriculum.png" alt=""><span>输入你课程名称</span></a>
+            <a href=""><img src="./images/curriculum.png" alt=""><span>输入你课程名称</span></a>
+        </div>
+    </article>
+
+    <footer>
+        <nav class="footer_nav">
+            <a href="#"><img src="./images/function_img1.png" alt="">
+                <span>在线阅读</span></a>
+            <a href="#"><img src="./images/function_img2.png" alt="">
+                <span>书写网课</span></a>
+            <a href="#"><img src="./images/function_img3.png" alt="">
+                <span>电脑网课</span></a>
+            <a href="#"><img src="./images/function_img4.png" alt="">
+                <span>语文网课</span></a>
+            <a href="#"><img src="./images/function_img5.png" alt="">
+                <span>英语网课</span></a>
+        </nav>
+    </footer>
+
+    <!-- js -->
+    <script src="./js/flexible-index.js"></script>
+    <script src="./js/swiper-bundle.min.js"></script>
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            pagination: {
+                el: '.swiper-pagination',
+            },
+        });
+    </script>
+</body>
+
+</html>
