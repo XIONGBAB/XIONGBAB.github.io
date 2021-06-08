@@ -96,6 +96,7 @@ article .function_title h3 {
   width: 0.986667rem;
   height: 0.746667rem;
   background: url(../images/horn.png) no-repeat;
+  background-size: .986667rem auto;
 }
 .function_content {
   display: flex;
