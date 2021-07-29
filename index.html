@@ -8,93 +8,151 @@
     <title>Document</title>
     <style>
         body {
-            position: relative;
+            background-color: rgb(228, 228, 228);
+            padding: 10px;
         }
         
-        div {
-            position: absolute;
-            left: 0;
-            width: 100px;
-            height: 100px;
-            background-color: pink;
-            color: snow;
-            background: url(images/1.jpg) no-repeat;
-            background-size: 100%;
-        }
-        
-        span {
-            position: absolute;
-            top: 0;
-            width: 100px;
-            height: 100px;
-            background-color: skyblue;
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
         }
         
         a {
+            text-decoration: none;
+            color: black;
+        }
+        
+        .box ul li {
+            position: relative;
+            list-style: none;
+            float: left;
+            width: 180px;
+            height: 200px;
+            background-color: #fff;
+            box-shadow: 3px 2px 30px rgba(75, 74, 74, 0.295);
+            transition: all .4s ease-out;
+        }
+        
+        .box ul .on {
+            background-color: rgba(33, 151, 219, 0.836);
+            width: 360px;
+            /* 可以用图片 */
+            padding-left: 20px;
+            /* 鼠标放上会有个内边距 */
+        }
+        
+        .box ul li a img {
             position: absolute;
-            top: 500px;
-            left: 0;
+            right: 10px;
+            bottom: 20px;
+            width: 100px;
+            height: 100px;
+            transition: all .4s ease-out;
+        }
+        
+        .box ul .on img {
+            right: 10px;
+            bottom: 10px;
+            width: 150px;
+            height: 150px;
+        }
+        
+        .box ul li .title,
+        .sub {
+            width: 100%;
+            height: 30px;
+            text-align: center;
+        }
+        
+        .box ul .on .title,
+        .sub {
+            text-align: left;
+            color: rgb(255, 255, 255);
+        }
+        
+        .go {
+            display: none;
+        }
+        
+        .box ul .on .go {
+            display: block;
+            width: 70px;
+            height: 30px;
+            border: 2px solid rgb(255, 255, 255);
+            border-radius: 17px;
+            /* (高度+ 上下边框) / 2 */
+            text-align: center;
+            line-height: 26px;
+            color: rgb(255, 255, 255);
+            margin-top: 20px;
         }
     </style>
 </head>
 
 <body>
-    <div></div>
-    <span></span>
-    <script>
-        alert('让我们玩一个猜图游戏 \n 进行我的code 测试吧');
-        do {
-            var title = prompt('are you ready？   （请输入：yes）')
-        } while (title != "yes")
-        //obj 是目标对象  target 是目标距离   //num 是自己加的代表走多少像素
-
-        function animate1(obj, target, num) {
-            var stop = setInterval(function() {
-                if (obj.offsetLeft >= target) {
-                    // 停止动画，本质就是停止定时器，用clearInterval
-                    clearInterval(stop);
-                } else {
-                    obj.style.left = obj.offsetLeft + num + 'px';
-                }
-            }, 1000);
-        }
-
-        function animate2(obj, target, num) {
-            var stop = setInterval(function() {
-                if (obj.offsetTop >= target) {
-                    // 停止动画，本质就是停止定时器，用clearInterval
-                    clearInterval(stop);
-                } else {
-                    obj.style.top = obj.offsetTop + num + 'px';
-                }
-            }, 1000);
-        }
-        var div = document.querySelector('div');
-        var span = document.querySelector('span');
-        //调用函数
-        animate1(div, 100, 10); //传递对象，目标距离，一次走多少像素
-        animate2(span, 100, 10);
-        setTimeout(function() {
-            var title;
-            do {
-                title = prompt('请问图中的它像不像现在的你？  \n(请输入你心中的答案吧：）\n \n A、（很像） \n B、（不像） \n C、（退出）');
-                switch (title) {
-                    case 'A': //像
-                        alert('我也觉得');
-                        break;
-                    case 'B': //不像
-                        alert('我不允许你这样说你自己！！！');
-                        break;
-                    case 'C': //退出
-                        alert('就这样离开了啦？..... \n \n   \b \b \b（如果想看答案，请刷新页面）');
-                        continue;
-                    default: //其他情况
-                        alert('请输入正确的字母，注意是字母大写');
-                }
-            } while (title != 'C')
-        }, 10000)
-    </script>
-    <a href="study.html">study</a> 
+    <div class="box">
+        <ul id="box">
+            <li class="on">
+                <a href="javascript:;">
+                    <div class="title">新机首发</div>
+                    <div class="sub">有新机更有范</div>
+                    <div class="go">GO</div>
+                    <img src="./images/logo2.png">
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <div class="title">新机首发</div>
+                    <div class="sub">有新机更有范</div>
+                    <div class="go">GO</div>
+                    <img src="./images/logo2.png">
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <div class="title">新机首发</div>
+                    <div class="sub">有新机更有范</div>
+                    <div class="go">GO</div>
+                    <img src="./images/logo2.png">
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <div class="title">新机首发</div>
+                    <div class="sub">有新机更有范</div>
+                    <div class="go">GO</div>
+                    <img src="./images/logo2.png">
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <div class="title">新机首发</div>
+                    <div class="sub">有新机更有范</div>
+                    <div class="go">GO</div>
+                    <img src="./images/logo2.png">
+                </a>
+            </li>
+        </ul>
+    </div>
 </body>
+<script>
+    var ul = document.getElementById('box');
+    var lis = ul.getElementsByTagName('li');
+    for (var i = 0; i < lis.length; i++) {
+        lis[i].addEventListener('mouseenter', function() {
+            this.classList.add('on');
+        })
+        lis[i].addEventListener('mouseleave', function() {
+            this.classList.remove('on');
+        })
+        lis[i].addEventListener('click', function() {
+            this.classList.add('on');
+        })
+    }
+</script>
+
+
+
 
 </html>
