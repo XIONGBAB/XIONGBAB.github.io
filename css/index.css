@@ -136,6 +136,18 @@ body .container .header .content_box input {
   border-radius: 0.625rem;
   background: #ffdce5;
 }
+body .container .header .content_box .back {
+  position: absolute;
+  top: -30px;
+  left: 46%;
+  color: #fa6c9b;
+  width: 40px;
+  height: 21px;
+  background-color: #ffdce5;
+  text-align: center;
+  line-height: 22px;
+  border-radius: 5px;
+}
 body .container .container_img {
   /* body */
   display: flex;
