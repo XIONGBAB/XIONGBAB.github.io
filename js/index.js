@@ -8,7 +8,7 @@ $(function () {
         $('#rota').removeClass("rota_box")
         $('.content_box').stop().slideUp(500);
     });
-    $('.header').click(function () {
+    $('.header').tap(function () {
         $('.content_box').stop().slideUp(500);
     });
 })
