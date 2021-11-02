@@ -9,6 +9,6 @@ $(function () {
         $('.content_box').stop().slideUp(500);
     });
         $('.header').hover(function () {
-        $(this).stop().slideUp(500);
+        $('.content_box').stop().slideUp(500);
     });
 })
