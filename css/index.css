@@ -174,3 +174,34 @@ body .container .container_img .img_box a img {
 body .container .container_img .img_box span {
   font-size: 12px;
 }
+body .container .style_box {
+  display: none;
+}
+body .container .style_box .style_css {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 4.375rem;
+  overflow: hidden;
+}
+body .container .style_box .style_css .img_box {
+  width: 33.99%;
+  text-align: center;
+  color: #b6b5b5;
+  margin: 0 5px;
+  flex: 30%;
+  margin-bottom: 0.3125rem;
+  box-shadow: 0.07rem 0.08rem 0.2rem 0.01rem #d8d7d7;
+}
+body .container .style_box .style_css .img_box a img {
+  width: 100%;
+  margin-bottom: 2px;
+}
+body .container .style_box .style_css .img_box span {
+  font-size: 12px;
+}
+body .container .style_box .hide_box {
+  display: none;
+}
