@@ -3,7 +3,7 @@ $(function () {
         $('#rota').toggleClass('rota_box');
         $('#rota').removeClass('rota_box2');
         $('.content_box').stop().slideDown(500);
-        $('.logo img').prop('src', '');
+        $('.logo img').prop('src', './images/back.png');
         $('.back').css('display', 'block');
     }, function () {
         $('#rota').toggleClass("rota_box2");
