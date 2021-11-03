@@ -1,1 +1,41 @@
-$((function(){function o(o){$(".container_img").hide(),$(o).removeClass("hide_box").siblings().addClass("hide_box"),$(".style_box").css("display","block")}$(".all_box").hover((function(){$("#rota").toggleClass("rota_box"),$("#rota").removeClass("rota_box2"),$(".content_box").stop().slideDown(500)}),(function(){$("#rota").toggleClass("rota_box2"),$("#rota").removeClass("rota_box"),$(".content_box").stop().slideUp(500)})),$(".back").click((function(){$(".content_box").stop().slideUp(500)})),$("#sx").click((function(){o(".style_sx")})),$("#qs").click((function(){o(".style_qs")})),$("#jy").click((function(){o(".style_jy")})),$("#hy").click((function(){o(".style_hy")})),$("#jy").click((function(){o(".style_jy")})),$("#kt").click((function(){o(".style_kt")})),$("#hb").click((function(){o(".style_hb")})),$("#zs").click((function(){o(".style_zs")})),$("#ks").click((function(){o(".style_ks")}))}));
+$(function () {
+    $('.all_box').hover(function () {
+        $('#rota').toggleClass('rota_box');
+        $('#rota').removeClass('rota_box2');
+        $('.content_box').stop().slideDown(500);
+        $('.logo').stop().fadeOut();
+        $('#home').css('display', 'block');
+    }, function () {
+        $('#rota').toggleClass("rota_box2");
+        $('#rota').removeClass("rota_box");
+        $('.content_box').stop().slideUp(500);
+        $('.logo').stop().fadeIn();
+        $('#home').css('display', 'none');
+    });
+    $('#back').click(function () {
+        $('.content_box').stop().slideUp(500);
+    });
+
+    // click btn
+    function hide_box(class_name) {
+        $('.container_img').hide();
+        $(class_name).removeClass('hide_box').siblings().addClass('hide_box');
+        $('.style_box').css('display', 'block');
+    };
+    $('#sx').click(function () {
+        hide_box(".style_sx");
+    });
+    $('#qs').click(function () {
+        hide_box(".style_qs");
+    });
+    $('#hb').click(function () {
+        hide_box(".style_hb");
+    });
+    $('#zs').click(function () {
+        hide_box(".style_zs");
+    });
+    $('#dh').click(function () {
+        hide_box(".style_dh");
+    });
+
+})
