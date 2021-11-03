@@ -32,11 +32,6 @@ img,
 a {
     -webkit-touch-callout: none;
 }
-
-img {
-    border: 0;
-}
-
 // @media (min-width: 1200px) {
 //     .container {
 //         width: 1200px;
