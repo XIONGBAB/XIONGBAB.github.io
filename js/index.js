@@ -3,13 +3,13 @@ $(function () {
         $('#rota').toggleClass('rota_box');
         $('#rota').removeClass('rota_box2');
         $('.content_box').stop().slideDown(500);
+        $('.logo img').prop('src', '');
+        $('.back').css('display', 'block');
     }, function () {
         $('#rota').toggleClass("rota_box2");
         $('#rota').removeClass("rota_box");
         $('.content_box').stop().slideUp(500);
-    });
-    $('#back').click(function () {
-        $('.content_box').stop().slideUp(500);
+        $('.logo img').prop('src', './images/wedding.png');
     });
     $('#back').click(function () {
         $('.content_box').stop().slideUp(500);
@@ -38,5 +38,4 @@ $(function () {
     $('#dh').click(function () {
         hide_box(".style_dh");
     });
-
 })
