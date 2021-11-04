@@ -3,19 +3,20 @@ $(function () {
         $('#rota').toggleClass('rota_box');
         $('#rota').removeClass('rota_box2');
         $('.content_box').stop().slideDown(500);
-        $('.logo img').prop('src', './images/transparent.png');
+        $('.logo img').prop('src', './images/upload/transparent.png');
         $('.back').css('display', 'block');
     }, function () {
         $('#rota').toggleClass("rota_box2");
         $('#rota').removeClass("rota_box");
         $('.content_box').stop().slideUp(500);
-        $('.logo img').prop('src', './images/wedding.png');
+        $('.logo img').prop('src', './images/upload/wedding.png');
     });
     $('#back').click(function () {
         $('.content_box').stop().slideUp(500);
     });
     $('.logo').click(function () {
         $('.container_img').show();
+        $('.style_box').hide();
     });
     // click btn
     function hide_box(class_name) {
