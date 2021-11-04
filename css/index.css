@@ -115,7 +115,7 @@ body .container .header .all_box .rota_box2 {
 body .container .header .bg {
   width: 100%;
   height: 100%;
-  background: url(../images/flow.png) no-repeat;
+  background: url(../images/upload/flow.png) no-repeat;
   background-size: 100% 3.75rem;
 }
 body .container .header .content_box {
@@ -224,7 +224,13 @@ body .container .container_img .img_box a img {
   margin-bottom: 2px;
 }
 body .container .container_img .img_box span {
+  display: block;
   font-size: 12px;
+  width: 115px;
+  height: 18px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 body .container .style_box {
   display: none;
@@ -252,6 +258,12 @@ body .container .style_box .style_css .img_box a img {
   margin-bottom: 2px;
 }
 body .container .style_box .style_css .img_box span {
+  display: block;
+  width: 115px;
+  height: 18px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   font-size: 12px;
 }
 body .container .style_box .hide_box {
