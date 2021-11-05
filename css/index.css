@@ -326,6 +326,13 @@ body .container .back_top {
   right: 10px;
   width: 30px;
   height: 30px;
-  background-color: aqua;
+  background-color: #fa6c9b;
   display: none;
+  text-align: center;
+  line-height: 28px;
+  border-radius: 2px;
+}
+body .container .back_top img {
+  width: 60%;
+  height: 60%;
 }
