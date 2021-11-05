@@ -107,11 +107,11 @@ window.addEventListener('load', function () {
                     index++;
                 }
                 var translatex = -index * w;
-                ul.style.transition = 'all .5s';
+                ul.style.transition = 'all .3s';
                 ul.style.transform = 'translateX(' + translatex + 'px)';
             } else {
                 var translatex = -index * w;
-                ul.style.transition = 'all .5s';
+                ul.style.transition = 'all .3s';
                 ul.style.transform = 'translateX(' + translatex + 'px)';
             }
         }
@@ -119,8 +119,8 @@ window.addEventListener('load', function () {
         timer = setInterval(function () {
             index++;
             var translatex = -index * w;
-            ul.style.transition = 'all .5s';
+            ul.style.transition = 'all .3s';
             ul.style.transform = 'translateX(' + translatex + 'px)';
-        }, 2000);
+        }, 3000);
     });
 });
