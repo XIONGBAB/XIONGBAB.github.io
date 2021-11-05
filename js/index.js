@@ -39,4 +39,88 @@ $(function () {
     $('#dh').click(function () {
         hide_box(".style_dh");
     });
-})
+    // // back top
+    $(window).scroll(function () {
+        var topY = $(document).scrollTop();
+        if (topY >= 600) {
+            $('.back_top').fadeIn();
+        } else {
+            $('.back_top').fadeOut();
+        }
+    })
+    $('.back_top').click(function () {
+        $('body,html').stop().animate({
+            scrollTop: 0
+        })
+    });
+});
+window.addEventListener('load', function () {
+    // rotation chart
+    var wrap = document.querySelector('.wrap');
+    var ul = wrap.children[0];
+    var ul2 = wrap.children[1];
+    var w = wrap.offsetWidth;
+    var index = 0;
+    var timer = setInterval(function () {
+        index++;
+        var translatex = -index * w;
+        ul.style.transition = 'all .3s';
+        ul.style.transform = 'translateX(' + translatex + 'px)';
+    }, 3000);
+    ul.addEventListener('transitionend', function () {
+        if (index >= 3) {
+            index = 0;
+            ul.style.transition = 'none';
+            var translatex = -index * w;
+            ul.style.transform = 'translateX(' + translatex + 'px)';
+        } else if (index < 0) {
+            index = 2;
+            ul.style.transition = 'none';
+            var translatex = -index * w;
+            ul.style.transform = 'translateX(' + translatex + 'px)';
+        };
+        ul2.querySelector('.active').classList.remove('active');
+        ul2.children[index].classList.add('active');
+    });
+    var startX = 0;
+    var moveX = 0;
+    var flag = false;
+    ul.addEventListener('touchstart', function (e) {
+        startX = e.targetTouches[0].pageX;
+        clearInterval(timer);
+    });
+    ul.addEventListener('touchmove', function (e) {
+        moveX = e.targetTouches[0].pageX - startX;
+        var translatex = -index * w + moveX;
+        ul.style.transition = 'none';
+        ul.style.transform = 'translateX(' + translatex + 'px)';
+        flag = true;
+        e.preventDefault();
+    });
+    ul.addEventListener('touchend', function (e) {
+        clearInterval(timer);
+        if (flag) {
+            if (Math.abs(moveX) > 50) {
+                if (moveX > 0) {
+                    index--;
+                } else {
+                    index++;
+                }
+                var translatex = -index * w;
+                ul.style.transition = 'all .5s';
+                ul.style.transform = 'translateX(' + translatex + 'px)';
+            } else {
+                var translatex = -index * w;
+                ul.style.transition = 'all .5s';
+                ul.style.transform = 'translateX(' + translatex + 'px)';
+            }
+        }
+        clearInterval(timer);
+        timer = setInterval(function () {
+            index++;
+            var translatex = -index * w;
+            ul.style.transition = 'all .5s';
+            ul.style.transform = 'translateX(' + translatex + 'px)';
+        }, 2000);
+    });
+});
