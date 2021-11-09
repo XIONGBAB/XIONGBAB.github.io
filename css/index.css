@@ -31,6 +31,13 @@ img,
 a {
   -webkit-touch-callout: none;
 }
+img{
+	//元素不能成为鼠标事件的target
+	pointer-events:none;
+	-webkit-pointer-events:none;
+	-ms-pointer-events:none;
+	-moz-pointer-events:none;
+}
 img {
   border: 0;
 }
