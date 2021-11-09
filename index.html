@@ -569,10 +569,9 @@
                 console.log("onLoadBackStart:" + i);
             }
         });
-        document.oncontextmenu = function (e) {
-            //或者return false;
+        document.addEventListener('touchstart', function (e) {
             e.preventDefault();
-        };
+        });
     </script>
 </body>
 
