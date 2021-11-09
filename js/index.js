@@ -130,4 +130,7 @@ window.addEventListener('load', function () {
     //         ul.style.transform = 'translateX(' + translatex + 'px)';
     //     }, 18000);
     // });
+        window.addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+    });
 });
