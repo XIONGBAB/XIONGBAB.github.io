@@ -17,6 +17,7 @@ $(function () {
     $('.logo').click(function () {
         $('.container_img').show();
         $('.style_box').hide();
+        $('#main span').html('更多');
     });
     // click btn
     function hide_box(class_name) {
@@ -26,18 +27,23 @@ $(function () {
     };
     $('#sx').click(function () {
         hide_box(".style_sx");
+        $('#main span').html('森系');
     });
     $('#qs').click(function () {
         hide_box(".style_qs");
+        $('#main span').html('轻奢');
     });
     $('#hb').click(function () {
         hide_box(".style_hb");
+        $('#main span').html('韩版');
     });
     $('#zs').click(function () {
         hide_box(".style_zs");
+        $('#main span').html('中式');
     });
     $('#dh').click(function () {
         hide_box(".style_dh");
+        $('#main span').html('动画');
     });
     // // back top
     $(window).scroll(function () {
@@ -107,11 +113,11 @@ window.addEventListener('load', function () {
                     index++;
                 }
                 var translatex = -index * w;
-                ul.style.transition = 'all .3s';
+                ul.style.transition = 'all .5s';
                 ul.style.transform = 'translateX(' + translatex + 'px)';
             } else {
                 var translatex = -index * w;
-                ul.style.transition = 'all .3s';
+                ul.style.transition = 'all .5s';
                 ul.style.transform = 'translateX(' + translatex + 'px)';
             }
         }
@@ -119,7 +125,7 @@ window.addEventListener('load', function () {
         timer = setInterval(function () {
             index++;
             var translatex = -index * w;
-            ul.style.transition = 'all .3s';
+            ul.style.transition = 'all .5s';
             ul.style.transform = 'translateX(' + translatex + 'px)';
         }, 3000);
     });
