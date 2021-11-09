@@ -72,7 +72,7 @@ window.addEventListener('load', function () {
         var translatex = -index * w;
         ul.style.transition = 'all .3s';
         ul.style.transform = 'translateX(' + translatex + 'px)';
-    }, 3000);
+    }, 18000);
     ul.addEventListener('transitionend', function () {
         if (index >= 3) {
             index = 0;
@@ -127,6 +127,6 @@ window.addEventListener('load', function () {
             var translatex = -index * w;
             ul.style.transition = 'all .5s';
             ul.style.transform = 'translateX(' + translatex + 'px)';
-        }, 3000);
+        }, 18000);
     });
 });
