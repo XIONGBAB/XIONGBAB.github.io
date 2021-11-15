@@ -1,4 +1,5 @@
 $(function () {
+    // loading start
     const loading = setTimeout(function () {
         $('.loading_box').stop().fadeOut();
     }, 5000);
