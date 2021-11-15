@@ -1,8 +1,7 @@
 $(function () {
-    // loading start
-//     const loading = setTimeout(function () {
-//         $('.loading_box').stop().fadeOut();
-//     }, 5000);
+    const loading = setTimeout(function () {
+        $('.loading_box').stop().fadeOut();
+    }, 5000);
     // loading end
     $('.all_box').hover(function () {
         $('#rota').toggleClass('rota_box');
@@ -64,6 +63,7 @@ $(function () {
             scrollTop: 0
         })
     });
+
 });
 window.addEventListener('load', function () {
     // rotation chart
