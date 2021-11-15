@@ -17,13 +17,17 @@
     <![endif]-->
     <style>
     </style>
+    <script>
+        window.location.href = /Android|webOS|iPhone|iPad|BlackBeery/i.test(navigator.userAgent) ? "index.html" :
+            "pc.html";
+    </script>
 </head>
 
 <body>
     <!-- wedding box -->
     <div class="container">
         <!-- loading box-->
-<!--         <div class="loading_box">
+        <div class="loading_box">
             <div class="animation_box">
                 <ul>
                     <li></li>
@@ -36,7 +40,7 @@
                 <br />
                 <p>Loading<i>.</i><i>.</i><i>.</i></p>
             </div>
-        </div> -->
+        </div>
         <div class="header clearfix">
             <!-- log box -->
             <div class="logo"><img data-lazy-src="./images/upload/wedding.png" alt=""></div>
@@ -578,7 +582,7 @@
     <script src="./js/index.js"></script>
     <script>
         lazyLoadInit({
-            showTime: 50,
+            showTime: 10,
             onLoadBackEnd: function (i, e) {
                 console.log("onLoadBackEnd:" + i);
             },
@@ -586,9 +590,6 @@
                 console.log("onLoadBackStart:" + i);
             }
         });
-//         window.location.href = /Android|webOS|iPhone|iPad|BlackBeery/i.test(navigator.userAgent) ? "index.html" :
-//             "pc.html";
     </script>
 </body>
-
 </html>
