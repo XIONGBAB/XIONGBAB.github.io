@@ -2,7 +2,7 @@ $(function () {
     // loading start
 //     const loading = setTimeout(function () {
 //         $('.loading_box').stop().fadeOut();
-    }, 5000);
+//     }, 5000);
     // loading end
     $('.all_box').hover(function () {
         $('#rota').toggleClass('rota_box');
