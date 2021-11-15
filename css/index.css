@@ -32,8 +32,6 @@ a {
   -webkit-touch-callout: none;
 }
 img {
-  pointer-events: none;
-  /* 禁止长按图片保存 */
   border: 0;
 }
 ul {
