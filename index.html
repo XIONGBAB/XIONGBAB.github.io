@@ -67,8 +67,7 @@
         <p> PC端 正在开发中 . . .</p>
     </div>
     <script>
-        window.location.href = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ? "app.html" :
-            'index.html';
+        window.location.href = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ? "app.html" :'index.html';
         $(function () {
             var timer = setTimeout(function () {
                 $('div').css('display', 'block');
