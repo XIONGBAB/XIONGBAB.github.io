@@ -15,14 +15,19 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <!-- <style>
+    </style>
+    <script>
+        window.location.href = /Android|webOS|iPhone|iPad|BlackBeery/i.test(navigator.userAgent) ? "index.html" :
+            "pc.html";
+    </script> -->
 </head>
 
 <body>
     <!-- wedding box -->
     <div class="container">
         <!-- loading box-->
-<!--         <div class="loading_box">
+        <!-- <div class="loading_box">
             <div class="animation_box">
                 <ul>
                     <li></li>
@@ -577,7 +582,7 @@
     <script src="./js/index.js"></script>
     <script>
         lazyLoadInit({
-            showTime: 10,
+            showTime: 50,
             onLoadBackEnd: function (i, e) {
                 console.log("onLoadBackEnd:" + i);
             },
@@ -587,4 +592,5 @@
         });
     </script>
 </body>
+
 </html>
