@@ -1,4 +1,10 @@
 $(function () {
+    // loading start
+    const loading = setTimeout(function () {
+        $('.loading_box').stop().fadeOut();
+        // $('.loading_box').css("display", "none");
+    }, 5000);
+    // loading end
     $('.all_box').hover(function () {
         $('#rota').toggleClass('rota_box');
         $('#rota').removeClass('rota_box2');
