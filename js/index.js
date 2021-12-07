@@ -19,6 +19,7 @@ $(function () {
     });
     $('#back').click(function () {
         $('.content_box').stop().slideUp(500);
+        backTop();
     });
     $('.logo').click(function () {
         $('.container_img').show();
