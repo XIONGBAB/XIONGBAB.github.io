@@ -31,13 +31,21 @@ $(function () {
         $(class_name).removeClass('hide_box').siblings().addClass('hide_box');
         $('.style_box').css('display', 'block');
     };
+
+    function backTop() {
+        $('body,html').stop().animate({
+            scrollTop: 0
+        });
+    }
     $('#sx').click(function () {
         hide_box(".style_sx");
         $('#main span').html('森系');
+        backTop();
     });
     $('#qs').click(function () {
         hide_box(".style_qs");
         $('#main span').html('轻奢');
+        backTop();
     });
     $('#hb').click(function () {
         hide_box(".style_hb");
