@@ -50,14 +50,17 @@ $(function () {
     $('#hb').click(function () {
         hide_box(".style_hb");
         $('#main span').html('韩版');
+        backTop();
     });
     $('#zs').click(function () {
         hide_box(".style_zs");
         $('#main span').html('中式');
+        backTop();
     });
     $('#dh').click(function () {
         hide_box(".style_dh");
         $('#main span').html('动画');
+        backTop();
     });
     // // back top
     $(window).scroll(function () {
