@@ -112,14 +112,10 @@ window.addEventListener('load', function () {
         ul2.querySelector('.active').classList.remove('active');
         ul2.children[index].classList.add('active');
     });
-    // 长按事件
-    window.addEventListener('contextmenu', function (e) {
-        e.preventDefault();
-    });
-    document.oncontextmenu = function (e) {
-        //或者return false;
-        e.preventDefault();
-    };
+document.addEventListener("longTap", function () {
+        console.log(1);
+        return false;
+    })
     // 开启/关闭触摸滑动
     // var startX = 0;
     // var moveX = 0;
