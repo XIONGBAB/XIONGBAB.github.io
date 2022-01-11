@@ -2,6 +2,7 @@ $(function () {
     // loading start
     const loading = setTimeout(function () {
         $('.loading_box').stop().fadeOut();
+        $('.loading_box').css("display", "none");
     }, 5000);
     // loading end
     $('.all_box').hover(function () {
@@ -111,10 +112,38 @@ window.addEventListener('load', function () {
         ul2.querySelector('.active').classList.remove('active');
         ul2.children[index].classList.add('active');
     });
-document.addEventListener("longTap", function () {
-        console.log(1);
-        return false;
-    })
+    // 长按事件
+
+    (function agent() {
+        let unlock = false
+        document.addEventListener('allow_copy', (event) => {
+            unlock = event.detail.unlock
+        })
+
+        const copyEvents = [
+            'copy',
+            'cut',
+            'contextmenu',
+            'selectstart',
+            'mousedown',
+            'mouseup',
+            'mousemove',
+            'keydown',
+            'keypress',
+            'keyup',
+        ]
+        const rejectOtherHandlers = (e) => {
+            if (unlock) {
+                e.stopPropagation()
+                if (e.stopImmediatePropagation) e.stopImmediatePropagation()
+            }
+        }
+        copyEvents.forEach((evt) => {
+            document.documentElement.addEventListener(evt, rejectOtherHandlers, {
+                capture: true,
+            })
+        })
+    })();
     // 开启/关闭触摸滑动
     // var startX = 0;
     // var moveX = 0;
