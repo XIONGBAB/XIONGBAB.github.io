@@ -2,6 +2,7 @@ $(function () {
     // loading start
     const loading = setTimeout(function () {
         $('.loading_box').stop().fadeOut();
+        $('.loading_box').css("display", "none");
     }, 5000);
     // loading end
     $('.all_box').hover(function () {
@@ -111,6 +112,14 @@ window.addEventListener('load', function () {
         ul2.querySelector('.active').classList.remove('active');
         ul2.children[index].classList.add('active');
     });
+    // 长按事件
+    window.addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+    });
+    document.oncontextmenu = function (e) {
+        //或者return false;
+        e.preventDefault();
+    };
     // 开启/关闭触摸滑动
     // var startX = 0;
     // var moveX = 0;
