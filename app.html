@@ -8,37 +8,6 @@
     <meta name="keywords" content="wedding">
     <meta name="decription" content="wedding">
     <meta name="authro" name="XIONGBAB">
-    <script>
-        (function agent() {
-            let unlock = false
-            document.addEventListener('allow_copy', (event) => {
-                unlock = event.detail.unlock
-            })
-            const copyEvents = [
-                'copy',
-                'cut',
-                'contextmenu',
-                'selectstart',
-                'mousedown',
-                'mouseup',
-                'mousemove',
-                'keydown',
-                'keypress',
-                'keyup',
-            ]
-            const rejectOtherHandlers = (e) => {
-                if (unlock) {
-                    e.stopPropagation()
-                    if (e.stopImmediatePropagation) e.stopImmediatePropagation()
-                }
-            }
-            copyEvents.forEach((evt) => {
-                document.documentElement.addEventListener(evt, rejectOtherHandlers, {
-                    capture: true,
-                })
-            })
-        })();
-    </script>
     <title>wedding link</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/index.css">
