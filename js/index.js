@@ -113,9 +113,12 @@ window.addEventListener('load', function () {
         ul2.querySelector('.active').classList.remove('active');
         ul2.children[index].classList.add('active');
     });
-        document.onselectstart = function () {
-            return false;
-        };
+    node.addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+    });
+    node.ontouchend = function () {
+        throw new Error("NO ERROR:禁止长按弹出的菜单");
+    }
 
     // 开启/关闭触摸滑动
     // var startX = 0;
