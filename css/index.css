@@ -27,9 +27,15 @@ input {
   margin: 0;
   padding: 0;
 }
-body {
-  -webkit-touch-callout: none !important;
+
+* {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
+
 img {
   border: 0;
 }
