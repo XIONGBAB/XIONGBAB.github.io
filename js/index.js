@@ -1,75 +1,42 @@
-$(function () {
-    // loading start
-    const loading = setTimeout(function () {
-        $('.loading_box').stop().fadeOut();
-        // $('.loading_box').css("display", "none");
-    }, 5000);
-    // loading end
-    $('.all_box').hover(function () {
-        $('#rota').toggleClass('rota_box');
-        $('#rota').removeClass('rota_box2');
-        $('.content_box').stop().slideDown(500);
-        $('.logo img').prop('src', './images/upload/transparent.png');
-        $('.back').css('display', 'block');
-    }, function () {
-        $('#rota').toggleClass("rota_box2");
-        $('#rota').removeClass("rota_box");
-        $('.content_box').stop().slideUp(500);
-        $('.logo img').prop('src', './images/upload/wedding.png');
-    });
-    $('#back').click(function () {
-        $('.content_box').stop().slideUp(500);
-    });
-    $('.logo').click(function () {
-        $('.container_img').show();
-        $('.style_box').hide();
-        $('#main span').html('更多');
-        backTop();
-    });
-    // click btn
-    function hide_box(class_name) {
-        $('.container_img').hide();
-        $(class_name).removeClass('hide_box').siblings().addClass('hide_box');
-        $('.style_box').css('display', 'block');
-    };
+// jQuery js-----------------------------------------------------
 
-    function backTop() {
-        $('body,html').stop().animate({
-            scrollTop: 0
+$(function () {
+    // 节流阀
+    let flag = true;
+    $(".nav_wrap>ul>li").click(function () {
+        flag = false;
+        // console.log($(this).index() - 1);
+        var current = $(".links_content").eq($(this).index()).offset().top; // 选中li索引号对应内容区域盒子计算top值
+        $("body,html").stop().animate({ // animate有个回调函数
+                scrollTop: current
+            },
+            function () {
+                flag = true;
+            });
+        $(this).css({
+            "background": "#ece8e814",
+            "border-radius": "1px"
+        }).siblings().css({
+            "background": "",
+            "border-radius": ""
         });
-    }
-    $('#sx').click(function () {
-        hide_box(".style_sx");
-        $('#main span').html('森系');
-        backTop();
     });
-    $('#qs').click(function () {
-        hide_box(".style_qs");
-        $('#main span').html('轻奢');
-        backTop();
+    $(window).scroll(function () {
+        if (flag) {
+            $(".links_content").each(function (i, ele) {
+                if ($(document).scrollTop() > ($(ele).offset().top - 100)) {
+                    $(".nav_wrap ul li").eq(i).css({
+                        "background": "#ece8e814",
+                        "border-radius": "1px"
+                    }).siblings().css({
+                        "background": "",
+                        "border-radius": ""
+                    });
+                };
+            });
+        }
     });
-    $('#hb').click(function () {
-        hide_box(".style_hb");
-        $('#main span').html('韩版');
-        backTop();
-    });
-    $('#zs').click(function () {
-        hide_box(".style_zs");
-        $('#main span').html('中式');
-        backTop();
-    });
-    $('#dh').click(function () {
-        hide_box(".style_dh");
-        $('#main span').html('动画');
-        backTop();
-    });
-    $('#xn').click(function () {
-        hide_box(".style_xn");
-        $('#main span').html('新年');
-        backTop();
-        console.log(1);
-    });
-    // // back top
+    // back top js------------------------------------------------
     $(window).scroll(function () {
         var topY = $(document).scrollTop();
         if (topY >= 600) {
@@ -85,81 +52,144 @@ $(function () {
     });
 
 });
-window.addEventListener('load', function () {
-    // rotation chart
-    var wrap = document.querySelector('.wrap');
-    var ul = wrap.children[0];
-    var ul2 = wrap.children[1];
-    var w = wrap.offsetWidth;
-    var index = 0;
-    var timer = setInterval(function () {
-        index++;
-        var translatex = -index * w;
-        ul.style.transition = 'all .3s';
-        ul.style.transform = 'translateX(' + translatex + 'px)';
-    }, 18000);
-    ul.addEventListener('transitionend', function () {
-        if (index >= 3) {
-            index = 0;
-            ul.style.transition = 'none';
-            var translatex = -index * w;
-            ul.style.transform = 'translateX(' + translatex + 'px)';
-        } else if (index < 0) {
-            index = 2;
-            ul.style.transition = 'none';
-            var translatex = -index * w;
-            ul.style.transform = 'translateX(' + translatex + 'px)';
-        };
-        ul2.querySelector('.active').classList.remove('active');
-        ul2.children[index].classList.add('active');
-    });
-    document.addEventListener('contextmenu', function (e) {
+
+// ----------------------------------------------------------------
+window.addEventListener("load", function () {
+    // document js-----------------------------------------------
+    document.addEventListener('contextmenu', (e) => {
         e.preventDefault();
     });
-    documnet.ontouchend = function () {
-        throw new Error("NO ERROR:禁止长按弹出的菜单");
-    }
+    document.addEventListener("copy", (e) => {
+        e.preventDefault();
+    });
+    // right link js -----------------------------------------------------
+    (function renderData() { // 渲染information 数据到html页面函数
+        let rightLink = document.querySelector(".link_wrap");
+        let seriesArr = [];
+        data.forEach(e => {
+            rightLink.innerHTML = `<div class="links_content">
+                                    <div class="title">
+                                       <h3 id="${e.id}">${e.title}</h3>
+                                       <p>${e.text}</p>                       
+                                    </div>
+                                   <div class="links">
+                                     <ul class="container"></ul>
+                                   </div>`;
+            let newData = e.mainInfo.map(m => {
+                return ` <li id="${m.id}">
+                            <a href="${m.url}" class="lks_img">
+                                <img src="${m.src}" alt="">
+                            </a>
+                            <div class="lks_info">
+                                <div class="liks_title">
+                                    <h5>${m.title1}</h5>
+                                    <span>${m.style}</span>
+                                    <section class="money_box">
+                                       <em>${m.type}</em>
+                                       <em>${m.sum}</em>
+                                       <em>${m.money}%</em>
+                                    </section>
+                                </div>
+                                <div class="liks_data">
+                                    <p>${m.time1}</p>
+                                    <i index="1">${m.hot}</i>
+                                </div>
+                            </div>
+                        </li>`;
+            }).join("");
+            let contentUl = $q(".links>ul");
+            contentUl.innerHTML = newData;
+            seriesArr += rightLink.innerHTML;
+        });
+        rightLink.innerHTML = seriesArr;
+    })();
+    // left nav js-----------------------------------------------
+    getLinkSum();
 
-    // 开启/关闭触摸滑动
-    // var startX = 0;
-    // var moveX = 0;
-    // var flag = false;
-    // ul.addEventListener('touchstart', function (e) {
-    //     startX = e.targetTouches[0].pageX;
-    //     clearInterval(timer);
-    // });
-    // ul.addEventListener('touchmove', function (e) {
-    //     moveX = e.targetTouches[0].pageX - startX;
-    //     var translatex = -index * w + moveX;
-    //     ul.style.transition = 'none';
-    //     ul.style.transform = 'translateX(' + translatex + 'px)';
-    //     flag = true;
-    //     e.preventDefault();
-    // });
-    // ul.addEventListener('touchend', function (e) {
-    //     clearInterval(timer);
-    //     if (flag) {
-    //         if (Math.abs(moveX) > 50) {
-    //             if (moveX > 0) {
-    //                 index--;
-    //             } else {
-    //                 index++;
-    //             }
-    //             var translatex = -index * w;
-    //             ul.style.transition = 'all .5s';
-    //             ul.style.transform = 'translateX(' + translatex + 'px)';
-    //         } else {
-    //             var translatex = -index * w;
-    //             ul.style.transition = 'all .5s';
-    //             ul.style.transform = 'translateX(' + translatex + 'px)';
-    //         }
-    //     }
-    //     clearInterval(timer);
-    //     timer = setInterval(function () {
-    //         index++;
-    //         var translatex = -index * w;
-    //         ul.style.transition = 'all .5s';
-    //         ul.style.transform = 'translateX(' + translatex + 'px)';
-    //     }, 18000);
-    // });
+    function getLinkSum() { // 获取链接数量函数
+        let spanNumber = $all(".bi-bookmark-heart");
+        let navSumResult = data.map(d => {
+            return d.mainInfo.length;
+        });
+        for (let i = 0; i < spanNumber.length; i++) {
+            spanNumber[i].innerHTML = "&nbsp" + navSumResult[i];
+        };
+    };
+    // get Data js --------------------------------------------------
+    getData(); // 获取热度函数
+    function getData() { // 获取热度函数
+        let lis = $all(".container li");
+        for (let i = 0; i < lis.length; i++) {
+            lis[i].addEventListener("click", function () {
+                console.log(1);
+                let iIndex = this.querySelector(".lks_info .liks_data i");
+                let index = parseInt(iIndex.getAttribute("index")); // 获取到当前li 的 index 值
+                iIndex.setAttribute("index", index + 1);
+                iIndex.innerHTML = index;
+                data.forEach(d => {
+                    d.mainInfo.forEach(m => {
+                        m.hot = index;
+                    });
+                });
+            });
+        };
+    };
+
+    function getHotData() { // 获取热度数据函数
+        let btn = $q(".info>.bi-flag");
+        btn.onclick = function () {
+            let indexSum = $all(".index_info i");
+            let indexSumArr = [];
+            for (let i = 0; i < indexSum.length; i++) {
+                indexSumArr.push(indexSum[i].getAttribute("index") - 1);
+            };
+        };
+    };
+
+    // date js -------------------------------------------------------
+    function getMiniDate() {
+        let nowDate = new Date();
+        let year = nowDate.getFullYear();
+        let month = nowDate.getMonth() + 1; // 因为月份计算机是从0-11
+        let day = nowDate.getDate();
+        month = (month + "").length > 1 ? "" + month : "0" + month;
+        day = (day + "").length > 1 ? "" + day : "0" + day;
+        return `${year}年${month}月${day}日`;
+    };
+    let dateBox = $q(".info_wrap ul li:nth-child(2) i");
+    dateBox.innerText = getMiniDate();
+
+    // style cursor js------------------------------------------------
+    animationType(); // 标签类型动画函数
+    function animationType() { // 标签类型动画函数
+        let linkInfos = $all(".lks_info");
+        for (let i = 0; i < linkInfos.length; i++) {
+            linkInfos[i].addEventListener("mouseover", function () {
+                var moneyBoxs = linkInfos[i].querySelectorAll(".money_box em");
+                moneyBoxs[0].style.transform = "translateY(-25px)";
+                moneyBoxs[1].style.transform = "translateY(-50px)";
+                moneyBoxs[2].style.transform = "translateY(-75px)";
+            });
+            linkInfos[i].addEventListener("mouseleave", function () {
+                var moneyBoxs = linkInfos[i].querySelectorAll(".money_box em")
+                moneyBoxs[0].style.transform = "translateY(0)";
+                moneyBoxs[1].style.transform = "translateY(0)";
+                moneyBoxs[2].style.transform = "translateY(0)";
+            });
+        };
+    };
+    // background color js----------------------------------------------
+    let spanColor = $all(".liks_title>span");
+    let color = ["rgb(58, 130, 199)", "rgb(187, 154, 124)", "rgb(73, 197, 117)", "rgb(201, 106, 187)", "rgb(20, 198, 182)", "rgb(165, 202, 188)", "rgb(186, 52, 140)", "rgb(202, 12, 48)"];
+    spanColor.forEach(s => {
+        s.style.backgroundColor = color[parseInt(Math.random() * color.length)];
+    });
+    // function tool js-------------------------------------------------
+    function $q(className) {
+        return document.querySelector(className);
+    };
+
+    function $all(className) {
+        return document.querySelectorAll(className);
+    };
 });
