@@ -25,7 +25,7 @@ $(function () {
         if (flag) {
             $(".links_content").each(function (i, ele) {
                 if ($(document).scrollTop() > ($(ele).offset().top - 100)) {
-                    $(".nav_wrap ul li").eq(i).css({
+                    $(".left_navbar>ul>li").eq(i).css({
                         "background": "#ece8e814",
                         "border-radius": "1px"
                     }).siblings().css({
