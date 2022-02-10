@@ -57,15 +57,15 @@ $(function () {
         $(".nav_more>img").stop().css("transform", "rotate(0deg)");
     });
     $(".main_page").click(function () {
-        $(".nav_back").hide();
+        $(".nav_column>.img_box").hide();
+        $(".scroll").show();
+        getInfoData(null, false);
         $(".nav_column").stop().slideUp();
         $(".nav_logo>img").stop().fadeIn();
         $(".nav_more>img").stop().css("transform", "rotate(0deg)");
-        $('.content').show().siblings(".scroll").show();
         $('.nav_more span').html('更多');
         backTop();
     });
-
     $('#sx').click(function () {
         hide_box("sx");
         $('.nav_more span').html('森系');
@@ -115,7 +115,7 @@ $(function () {
         $(".nav_column").stop().slideUp();
         $(".nav_logo>img").stop().fadeIn();
         $(".nav_more>img").stop().css("transform", "rotate(0deg)");
-        getInfoData(style_name);
+        getInfoData(style_name, true);
     };
 
     function backTop() {
@@ -124,11 +124,26 @@ $(function () {
         });
     };
 
-    function getInfoData(style_name) {
+    function getInfoData(style_name, true_name) {
         let rightLink = document.querySelector(".content");
         let seriesArr = [];
-        data.forEach(e => {
-            if (e.name == style_name) {
+        if (true_name) {
+            data.forEach(e => {
+                if (e.name == style_name) {
+                    let newData = e.mainInfo.map(m => {
+                        return ` <div class="img_box ${e.name}">
+                          <a href="${m.url}">
+                             <img src="${m.src}" alt="">
+                          </a>
+                          <span>${m.title1}</span>
+                      </div>`;
+                    }).join("");
+                    seriesArr += newData;
+                }
+            });
+            rightLink.innerHTML = seriesArr;
+        } else {
+            data.forEach(e => {
                 let newData = e.mainInfo.map(m => {
                     return ` <div class="img_box ${e.name}">
                           <a href="${m.url}">
@@ -138,10 +153,10 @@ $(function () {
                       </div>`;
                 }).join("");
                 seriesArr += newData;
-            }
-        });
-        rightLink.innerHTML = seriesArr;
-    }
+            });
+            rightLink.innerHTML = seriesArr;
+        }
+    };
 });
 
 // rotation chart ---------------------------------------------
