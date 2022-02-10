@@ -254,7 +254,7 @@ body {
   border: 0;
   border-radius: 0.1333rem;
   background: #ffdce5;
-  color: white;
+  color: rgb(250, 108, 155);
 }
 .container .scroll {
   position: relative;
