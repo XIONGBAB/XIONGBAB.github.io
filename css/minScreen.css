@@ -327,7 +327,7 @@ body {
   width: 100%;
 }
 .container .content .img_box span {
-  font-size: 0.16rem;
+  font-size: .24rem;
   display: block;
   white-space: nowrap;
   overflow: hidden;
