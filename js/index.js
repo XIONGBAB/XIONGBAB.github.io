@@ -1,103 +1,70 @@
-// flexible js -----------------------------------------------------------
-(function flexible(window, document) {
-    var docEl = document.documentElement;
-    var dpr = window.devicePixelRatio || 1;
-    setBodyFontSize();
-    setRemUnit();
-    // adjust body font size
-    function setBodyFontSize() {
-        if (document.body) {
-            document.body.style.fontSize = (12 * dpr) + 'px';
-        } else {
-            document.addEventListener('DOMContentLoaded', setBodyFontSize);
-        }
-    };
-    // set 1rem = viewWidth / 10
-    function setRemUnit() {
-        var rem = docEl.clientWidth / 10;
-        docEl.style.fontSize = rem + 'px';
-    };
-    // reset rem unit on page resize
-    window.addEventListener('resize', setRemUnit);
-    window.addEventListener('pageshow', function (e) {
-        if (e.persisted) {
-            setRemUnit();
-        }
-    });
-    // detect 0.5px supports
-    if (dpr >= 2) {
-        var fakeBody = document.createElement('body');
-        var testElement = document.createElement('div');
-        testElement.style.border = '.5px solid transparent';
-        fakeBody.appendChild(testElement);
-        docEl.appendChild(fakeBody);
-        if (testElement.offsetHeight === 1) {
-            docEl.classList.add('hairlines');
-        };
-        docEl.removeChild(fakeBody);
-    }
-}(window, document));
-
-// jQuery ------------------------------------------------------------
 $(function () {
+    // loading start
     const loading = setTimeout(function () {
         $('.loading_box').stop().fadeOut();
+        // $('.loading_box').css("display", "none");
     }, 5000);
-    $(".nav_more>span").click(function () {
-        $(".nav_column").stop().slideDown();
-        $(".nav_logo>img").stop().fadeOut();
-        $(".main_page").stop().fadeIn();
-        $(".nav_back").show();
-        $(".nav_more>img").stop().css("transform", "rotate(90deg)");
+    // loading end
+    $('.all_box').hover(function () {
+        $('#rota').toggleClass('rota_box');
+        $('#rota').removeClass('rota_box2');
+        $('.content_box').stop().slideDown(500);
+        $('.logo img').prop('src', './images/upload/transparent.png');
+        $('.back').css('display', 'block');
+    }, function () {
+        $('#rota').toggleClass("rota_box2");
+        $('#rota').removeClass("rota_box");
+        $('.content_box').stop().slideUp(500);
+        $('.logo img').prop('src', './images/upload/wedding.png');
     });
-    $(".slideUp").click(function () {
-        $(".nav_column").stop().slideUp();
-        $(".nav_logo>img").stop().fadeIn();
-        $(".main_page").stop().fadeOut();
-        $(".nav_more>img").stop().css("transform", "rotate(0deg)");
+    $('#back').click(function () {
+        $('.content_box').stop().slideUp(500);
     });
-    $(".main_page").click(function () {
-        $(".nav_column>.img_box").hide();
-        $(".scroll").show();
-        getInfoData(null, false);
-        $(".nav_column").stop().slideUp();
-        $(".nav_logo>img").stop().fadeIn();
-        $(".nav_more>img").stop().css("transform", "rotate(0deg)");
-        $('.nav_more span').html('更多');
+    $('.logo').click(function () {
+        $('.container_img').show();
+        $('.style_box').hide();
+        $('#main span').html('更多');
         backTop();
     });
+    // click btn
+    function hide_box(class_name) {
+        $('.container_img').hide();
+        $(class_name).removeClass('hide_box').siblings().addClass('hide_box');
+        $('.style_box').css('display', 'block');
+    };
+
+    function backTop() {
+        $('body,html').stop().animate({
+            scrollTop: 0
+        });
+    }
     $('#sx').click(function () {
-        hide_box("sx");
-        $('.nav_more span').html('森系');
+        hide_box(".style_sx");
+        $('#main span').html('森系');
         backTop();
     });
     $('#qs').click(function () {
-        hide_box("qs");
-        $('.nav_more span').html('轻奢');
+        hide_box(".style_qs");
+        $('#main span').html('轻奢');
         backTop();
     });
     $('#hb').click(function () {
-        hide_box("hb");
-        $('.nav_more span').html('韩版');
+        hide_box(".style_hb");
+        $('#main span').html('韩版');
         backTop();
     });
     $('#zs').click(function () {
-        hide_box("zs");
-        $('.nav_more span').html('中式');
+        hide_box(".style_zs");
+        $('#main span').html('中式');
         backTop();
     });
     $('#dh').click(function () {
-        hide_box("dh");
-        $('.nav_more span').html('动画');
+        hide_box(".style_dh");
+        $('#main span').html('动画');
         backTop();
     });
-    $('#xn').click(function () {
-        hide_box("xn");
-        $('.nav_more span').html('新年');
-        backTop();
-    });
-
-    $(window).scroll(function () { // back top 
+    // // back top
+    $(window).scroll(function () {
         var topY = $(document).scrollTop();
         if (topY >= 600) {
             $('.back_top').fadeIn();
@@ -106,62 +73,15 @@ $(function () {
         }
     })
     $('.back_top').click(function () {
-        backTop();
-    });
-
-    // function ------------------------------------------------------------
-    function hide_box(style_name) {
-        $('.content>.img_box').hide().parent().siblings(".scroll").hide();
-        $(".nav_column").stop().slideUp();
-        $(".nav_logo>img").stop().fadeIn();
-        $(".nav_more>img").stop().css("transform", "rotate(0deg)");
-        getInfoData(style_name, true);
-    };
-
-    function backTop() {
         $('body,html').stop().animate({
             scrollTop: 0
-        });
-    };
+        })
+    });
 
-    function getInfoData(style_name, true_name) {
-        let rightLink = document.querySelector(".content");
-        let seriesArr = [];
-        if (true_name) {
-            data.forEach(e => {
-                if (e.name == style_name) {
-                    let newData = e.mainInfo.map(m => {
-                        return ` <div class="img_box ${e.name}">
-                          <a href="${m.url}">
-                             <img src="${m.src}" alt="">
-                          </a>
-                          <span>${m.title1}</span>
-                      </div>`;
-                    }).join("");
-                    seriesArr += newData;
-                }
-            });
-            rightLink.innerHTML = seriesArr;
-        } else {
-            data.forEach(e => {
-                let newData = e.mainInfo.map(m => {
-                    return ` <div class="img_box ${e.name}">
-                          <a href="${m.url}">
-                             <img src="${m.src}" alt="">
-                          </a>
-                          <span>${m.title1}</span>
-                      </div>`;
-                }).join("");
-                seriesArr += newData;
-            });
-            rightLink.innerHTML = seriesArr;
-        }
-    };
 });
-
-// rotation chart ---------------------------------------------
 window.addEventListener('load', function () {
-    var wrap = document.querySelector('.scroll');
+    // rotation chart
+    var wrap = document.querySelector('.wrap');
     var ul = wrap.children[0];
     var ul2 = wrap.children[1];
     var w = wrap.offsetWidth;
@@ -187,13 +107,6 @@ window.addEventListener('load', function () {
         ul2.querySelector('.active').classList.remove('active');
         ul2.children[index].classList.add('active');
     });
-    document.addEventListener('contextmenu', function (e) {
-        e.preventDefault();
-    });
-    document.addEventListener("copy", (e) => {
-        e.preventDefault();
-    });
-
     // 开启/关闭触摸滑动
     // var startX = 0;
     // var moveX = 0;
@@ -236,22 +149,4 @@ window.addEventListener('load', function () {
     //         ul.style.transform = 'translateX(' + translatex + 'px)';
     //     }, 18000);
     // });
-
-    // link js -----------------------------------------------------
-    (function renderData() { // 渲染information 数据到html页面函数
-        let rightLink = document.querySelector(".content");
-        let seriesArr = [];
-        data.forEach(e => {
-            let newData = e.mainInfo.map(m => {
-                return ` <div class="img_box">
-                          <a href="${m.url}">
-                             <img src="${m.src}" alt="">
-                          </a>
-                          <span>${m.title1}</span>
-                      </div>`;
-            }).join("");
-            seriesArr += newData;
-        });
-        rightLink.innerHTML = seriesArr;
-    })();
 });
